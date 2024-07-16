@@ -10,6 +10,7 @@ async function run() {
   let repo = core.getInput('repo', { required: false }) || context.repo.repo
   const base = core.getInput('base', { required: false })
   const head = core.getInput('head', { required: false })
+  const headRepo = core.getInput('head_repo', { required: false })
   const mergeMethod = core.getInput('merge_method', { required: false })
   const prTitle = core.getInput('pr_title', { required: false })
   const prMessage = core.getInput('pr_message', { required: false })
@@ -36,6 +37,7 @@ async function run() {
       repo: context.repo.repo,
       title: prTitle,
       head: owner + ':' + head,
+      head_repo: headRepo,
       base,
       body: prMessage,
       maintainer_can_modify: false,
