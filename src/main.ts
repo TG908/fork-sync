@@ -60,7 +60,7 @@ async function run() {
       console.log('No commits between ' + context.repo.owner + ':' + base + ' and ' + owner + ':' + head);
     } else if ((error?.errors ?? error?.response?.data?.errors)?.[0]?.message?.startsWith('A pull request already exists for')) {
       // we were already done
-      console.log(error.errors[0].message);
+      console.log((error?.errors ?? error?.response?.data?.errors)?.[0]?.message);
     } else {
       if (!ignoreFail) {
         core.setFailed(`Failed to create or merge pull request: ${error ?? "[n/a]"}`);
